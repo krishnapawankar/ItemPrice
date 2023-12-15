@@ -1,0 +1,61 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+    <title>{% if item.id %}Edit Item{% else %}Add Item{% endif %}</title>
+    <style>
+        .form-container {
+            width: 60%;
+            margin: 20px auto; /* Centers the container */
+            padding: 15px;
+            border: 2px solid #4CAF50; /* Attractive border */
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: left;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-field input[type="text"],
+        .form-field input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <div class="form-container">
+        <h2>{% if item.id %}Edit Item{% else %}Add Item{% endif %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-field">
+                <label for="id_name">Name</label>
+                {{ form.name }}
+            </div>
+            <div class="form-field">
+                <label for="id_price">Price</label>
+                {{ form.price }}
+            </div>
+            <button type="submit" class="button">Save</button>
+        </form>
+    </div>
+{% endblock %}

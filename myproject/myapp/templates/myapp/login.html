@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center aligns all content */
+            padding-top: 50px; /* Adds some space at the top */
+        }
+        .login-container {
+            display: inline-block;
+            border: 2px solid #4CAF50; /* Adds a border to the container */
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9; /* Light background for the container */
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .signup-button {
+            background-color: #008CBA; /* Different color for signup */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" style="display: inline;"> <!-- Inline display -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Login</button>
+        </form>
+        <a href="{% url 'signup' %}" class="button signup-button">Sign up</a>
+    </div>
+</body>
+</html>

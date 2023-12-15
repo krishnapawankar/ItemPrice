@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .login-container {
+            display: inline-block;
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: left; /* Align text to the left within the container */
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-field input[type="text"],
+        .form-field input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .button, .signup-button {
+            display: block;
+            width: 100%; /* Make buttons full width */
+            padding: 10px 0;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .signup-button {
+            background-color: #008CBA;
+        }
+        .signup-button:hover {
+            background-color: #00688B;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Signup</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-field">
+                <label for="id_username">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="form-field">
+                <label for="id_password1">Password</label>
+                {{ form.password1 }}
+            </div>
+            <div class="form-field">
+                <label for="id_password2">Confirm Password</label>
+                {{ form.password2 }}
+            </div>
+            <button type="submit" class="button">Signup</button>
+        </form>
+        <a href="{% url 'login' %}" class="signup-button">Already have an account? Log in</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+    <title>Item List</title>
+    <style>
+        .item-list-container {
+            width: 60%;
+            margin: 20px auto; /* Centers the container */
+            padding: 15px;
+            border: 2px solid #4CAF50; /* Attractive border */
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .actions {
+            text-align: center;
+        }
+        .button-container {
+            text-align: center; /* Center the buttons */
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <div class="item-list-container">
+        <h2>Item List</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th class="actions">Actions</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>
+                    <a href="{% url 'item_edit' item.id %}">Edit</a> |
+                    <a href="{% url 'item_delete' item.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="button-container">
+            <a href="{% url 'item_add' %}" class="button">Add New Item</a>
+            <a href="{% url 'item_summary' %}" class="button">View Summary</a>
+        </div>
+    </div>
+{% endblock %}
